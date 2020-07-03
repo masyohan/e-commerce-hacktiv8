@@ -1,12 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <Navbar />
+      <Cart />
+      <router-view/>
+      <Footer />
+    <div class="bg-modal" :class="{ open: isOpen }">
     </div>
-    <router-view/>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+import Navbar from './components/Navbar.vue';
+import Cart from './components/Cart.vue';
+import Footer from './components/Footer.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Navbar,
+    Cart,
+    Footer,
+  },
+  computed: mapGetters(['isOpen']),
+};
+</script>
 
 <style>
 #app {
@@ -15,18 +33,28 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
-#nav {
-  padding: 30px;
+.container {
+  max-width: 1200px;
+  padding: 0 10px;
+  margin: 0 auto;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.bg-modal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.open {
+  display: block;
 }
 </style>

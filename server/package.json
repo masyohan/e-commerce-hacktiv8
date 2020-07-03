@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development nodemon app.js",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +18,8 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.2.1",
     "sequelize": "^5.21.13"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   }
 }
